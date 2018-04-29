@@ -100,12 +100,13 @@ WHERE first_name = 'GROUCHO' AND last_name = 'Williams';
 #  as that is exactly what the actor will be with the grievous error.
 #  BE CAREFUL NOT TO CHANGE THE FIRST NAME OF EVERY ACTOR TO `MUCHO GROUCHO`, 
 # HOWEVER! (Hint: update the record using a unique identifier.)
-
-
-
-
-
-
+UPDATE 
+	actor
+SET first_name = CASE 
+	WHEN first_name = 'HARPO' AND last_name = 'Williams' THEN 'GROUCHO'
+	WHEN first_name = 'HARPO' AND last_name != 'Williams' THEN 'MOCHO GROUCHO'
+END
+WHERE first_name = 'HARPO';
 
 # 5a. You cannot locate the schema of the `address` table. 
 # Which query would you use to re-create it?
